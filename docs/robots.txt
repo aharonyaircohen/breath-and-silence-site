@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://aharonyaircohen.github.io/breath-and-silence-site/sitemap.xml
