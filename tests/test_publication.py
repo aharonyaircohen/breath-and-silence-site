@@ -63,6 +63,14 @@ class ApprovedPublicationTests(unittest.TestCase):
                 self.assertTrue(r[key].strip(), (r['id'], key))
             self.assertTrue((self.output / f'research/s{r["id"]:03d}/index.html').is_file())
 
+    def test_dispenza_sources_are_discoverable_in_both_languages(self):
+        by_id = {r['id']: r for r in self.records}
+        for source_id in [28, 39, 79, 80]:
+            record = by_id[source_id]
+            searchable = ' '.join(record[k] for k in ['title', 'summary_he', 'relevance_he', 'limitation_he']).casefold()
+            self.assertIn('dispenza', searchable, source_id)
+            self.assertIn('דיספנזה', searchable, source_id)
+
     def test_local_links_assets_and_anchors(self):
         problems = []
         for file, parsed in self.pages.items():
