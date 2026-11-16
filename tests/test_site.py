@@ -13,7 +13,8 @@ class StaticSiteTests(unittest.TestCase):
             root = Path(td)
             content = root / 'content'
             content.mkdir()
-            (content / 'model.md').write_text('# נשימה ושקט\n\nהמוח מתמכר לרעש [7].\n\n<a id="experiment"></a>\n# ג. התהליך והניסוי\n\n## 14. מסגרת התהליך\nבחירה חופשית.\n\n## 15. שאלת הניסוי\nשינוי מחוץ לתרגול.\n\n<a id="conclusion"></a>\n# ד. מסקנה\nמודל עבודה.')
+            (content / 'model.md').write_text('# דממה חיה\n\nהמוח מתמכר לרעש [7].\n\n<a id="experiment"></a>\n# ג. התהליך והניסוי\n\n## 14. מסגרת התהליך\nבחירה חופשית.\n\n## 15. שאלת הניסוי\nשינוי מחוץ לתרגול.\n\n<a id="conclusion"></a>\n# ד. מסקנה\nמודל עבודה.')
+            (content / 'homepage.md').write_text('# דממה חיה\n## אימון לשקט נפשי\n\nדף ההסבר.')
             record = {'id': 7, 'title': '<script>test</script> Study', 'url': 'https://example.org/study',
                       'principles': ['P1'], 'identifiers': {}, 'year': '2024', 'journal': '',
                       'summary_he': 'ממצא ניסויי', 'relevance_he': 'למידת הרגל',
@@ -28,6 +29,9 @@ class StaticSiteTests(unittest.TestCase):
                 html = (output / name).read_text()
                 self.assertIn('lang="he"', html)
                 self.assertIn('dir="rtl"', html)
+                self.assertIn('| דממה חיה</title>', html)
+                self.assertIn('>דממה חיה<span>', html)
+                self.assertIn('content="דממה חיה: המודל', html)
             detail = (output / 'research/s007/index.html').read_text()
             self.assertNotIn('<script>test</script>', detail)
             self.assertIn('&lt;script&gt;', detail)
@@ -46,12 +50,36 @@ class RebuildAndPublicationTests(unittest.TestCase):
         content = root / 'content'
         content.mkdir()
         (content / 'model.md').write_text('# המודל\n\nתיאור [7].')
+        (content / 'homepage.md').write_text('# דממה חיה\n## אימון לשקט נפשי\n\nדף ההסבר.')
         record = {'id': 7, 'title': 'Study', 'url': 'https://example.org/study',
                   'principles': ['P1'], 'identifiers': {}, 'year': '', 'journal': '',
                   'summary_he': 'סיכום מדידה', 'relevance_he': 'רלוונטיות למודל',
                   'limitation_he': 'מגבלה חשובה', 'kind': 'trial', 'evidence_status': 'mixed'}
         (content / 'research.json').write_text(json.dumps([record], ensure_ascii=False))
         return content, record
+
+    def test_homepage_publishes_full_explanation_with_inline_source_links(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            content, record = self.fixture(root)
+            text = ('# דממה חיה\n## אימון לשקט נפשי\n\n'
+                    'מה נדרש כדי ששקט עמוק יהפוך לשגרה?\n\n'
+                    '## איך רעש נעשה הרגל\n\n'
+                    'הסבר עם [המחקר המקורי](https://example.org/study).\n\n'
+                    '## איך המרכיבים מתחברים לדממה חיה\n\n'
+                    'סיום מלא של ההסבר.')
+            (content / 'homepage.md').write_text(text)
+            output = root / 'site'
+            builder().build_site(content, output, '/course/')
+            html = (output / 'index.html').read_text()
+            self.assertIn('מה נדרש כדי ששקט עמוק יהפוך לשגרה?', html)
+            self.assertIn('איך המרכיבים מתחברים לדממה חיה', html)
+            self.assertIn('href="https://example.org/study"', html)
+            self.assertIn('class="toc-links"', html)
+            self.assertIn('סיום מלא של ההסבר.', html)
+            self.assertEqual(html.count('<h1'), 1)
+            self.assertNotIn('להכיר שקט.', html)
+            self.assertIn('<title>אימון לשקט נפשי | דממה חיה</title>', html)
 
     def test_rejects_private_archive_fields_in_public_input(self):
         with tempfile.TemporaryDirectory() as td:

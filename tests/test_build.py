@@ -42,7 +42,7 @@ class ProjectionTests(unittest.TestCase):
 
 class PublicationTests(unittest.TestCase):
     def test_public_model_preserves_claims_but_rewrites_internal_links(self):
-        original = ('# נשימה ושקט\n\nהמוח מתמכר לרעש [7].\n\n'
+        original = ('# דממה חיה\n\nהמוח מתמכר לרעש [7].\n\n'
                     '[מפה](research/evidence-map.md)\n'
                     '[נתונים](research/library.json)\n\n'
                     '## Sources\n\n[7] https://example.org/study\n')

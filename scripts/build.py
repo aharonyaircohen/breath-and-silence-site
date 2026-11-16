@@ -68,17 +68,17 @@ def esc(value):
     return html.escape(str(value), quote=True)
 
 
-def shell(title, body, base, active='home', route='', description='נשימה ושקט: המודל, המחקרים והתהליך. ממצאים, פרשנות והשערות - בנפרד.'):
+def shell(title, body, base, active='home', route='', description='דממה חיה: המודל, המחקרים והתהליך. ממצאים, פרשנות והשערות - בנפרד.'):
     nav = ''.join(f'<a href="{base}{path}"' + (' aria-current="page"' if key == active else '') + f'>{label}</a>' for key, path, label in NAV)
     canonical = SITE_ORIGIN + base + route
     return f'''<!doctype html>
 <html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{esc(title)} | נשימה ושקט</title><meta name="description" content="{esc(description)}">
+<title>{esc(title)} | דממה חיה</title><meta name="description" content="{esc(description)}">
 <meta name="theme-color" content="#214d3d"><link rel="canonical" href="{esc(canonical)}">
-<meta property="og:type" content="website"><meta property="og:locale" content="he_IL"><meta property="og:title" content="{esc(title)} | נשימה ושקט"><meta property="og:description" content="{esc(description)}"><meta property="og:url" content="{esc(canonical)}">
+<meta property="og:type" content="website"><meta property="og:locale" content="he_IL"><meta property="og:title" content="{esc(title)} | דממה חיה"><meta property="og:description" content="{esc(description)}"><meta property="og:url" content="{esc(canonical)}">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'none'">
 <link rel="stylesheet" href="{base}assets/site.css"><link rel="icon" href="{base}assets/favicon.svg" type="image/svg+xml"><script src="{base}assets/site.js" defer></script></head>
-<body><a class="skip" href="#main">דילוג לתוכן</a><header class="topbar"><div class="wrap topbar-inner"><a class="brand" href="{base}">נשימה ושקט<span>המודל · המחקר · התהליך</span></a><nav class="nav" aria-label="ניווט ראשי">{nav}</nav><details class="mobile-nav"><summary>תפריט</summary><nav aria-label="ניווט בנייד">{nav}</nav></details></div></header>
+<body><a class="skip" href="#main">דילוג לתוכן</a><header class="topbar"><div class="wrap topbar-inner"><a class="brand" href="{base}">דממה חיה<span>המודל · המחקר · התהליך</span></a><nav class="nav" aria-label="ניווט ראשי">{nav}</nav><details class="mobile-nav"><summary>תפריט</summary><nav aria-label="ניווט בנייד">{nav}</nav></details></div></header>
 <main id="main" class="wrap">{body}</main>
 <footer class="site-footer"><div class="wrap footer-inner"><p>מודל עבודה ומאגר מחקר, לא הבטחת תוצאה או תחליף לטיפול. המקורות כוללים גם מגבלות, תוצאות אפס ומקורות רקע. אין חובה לחוות עומק, שחרור או רגש מסוים.</p><a href="{REPO_URL}" target="_blank" rel="noopener noreferrer">קוד האתר ותיעוד</a></div></footer></body></html>'''
 
@@ -90,21 +90,19 @@ def page_head(title, description, base, parent=None):
     return f'<header class="page-head"><div class="breadcrumbs">{crumb}</div><h1>{esc(title)}</h1><p class="lead">{description}</p></header>'
 
 
-def render_reader(text, title, description, base, active, route):
+def render_reader(text, title, description, base, active, route, include_page_head=True):
     md = markdown.Markdown(extensions=['extra', 'toc'], extension_configs={'toc': {'toc_depth': '1-2', 'title': ''}})
     rendered = md.convert(public_model(text, base))
     toc = getattr(md, 'toc', '').replace('class="toc"', 'class="toc-links"')
-    body = page_head(title, description, base) + '<div class="reader-layout">' + f'<aside class="toc"><details open><summary>במסמך הזה</summary><div>{toc}</div></details></aside><article class="article">{rendered}</article></div>'
+    heading = page_head(title, description, base) if include_page_head else ''
+    body = heading + '<div class="reader-layout">' + f'<aside class="toc"><details open><summary>במסמך הזה</summary><div>{toc}</div></details></aside><article class="article">{rendered}</article></div>'
     return shell(title, body, base, active, route)
 
 
-def render_home(records, base):
-    principles = ''.join(f'<li><a href="{base}research/?p={pid}"><span class="principle-code" dir="ltr">{pid}</span><div><h3>{esc(title)}</h3><p>{esc(desc)}</p></div></a></li>' for pid, (title, desc) in PRINCIPLES.items() if pid != 'B')
-    body = f'''<section class="hero"><div><div class="eyebrow">נשימה ושקט / מסמך יסוד ומפת מחקר</div><h1>להכיר שקט.<br>ללמוד לחזור אליו.</h1><p class="lead">אימון חוזר במפגש עם שקט עמוק - לא רק כדי להירגע באותו ערב, אלא כדי לבדוק אפשרות לשינוי בנקודת המוצא, בתגובה לדרישות ובחיוניות.</p><div class="actions"><a class="button" href="{base}model/">לקריאת המודל</a><a class="button secondary" href="{base}research/">למאגר המחקרים</a></div></div><aside class="hero-aside"><h2>שלוש שכבות, בלי לערבב ביניהן</h2><p><strong>המודל מציע.</strong> הסבר מחבר במילים של יאיר.</p><p><strong>המחקר מודד.</strong> ממצאים, שיטות ומגבלות.</p><p><strong>הניסוי בודק.</strong> מה יקרה בתהליך המסוים.</p></aside></section>
-<section class="section-rail"><div><div class="eyebrow">העקרונות</div><h2>מה מחבר<br>את התהליך?</h2><p class="muted">הכותרות הן שפת המודל. כל עיקרון מקושר למקורות הרלוונטיים, בלי להציג את כל שרשרת ההסבר כמנגנון שכבר הוכח.</p></div><ol class="principles">{principles}</ol></section>
-<section class="section-rail"><div><div class="eyebrow">מפת הקריאה</div><h2>מהרעיון<br>אל הבדיקה</h2></div><div class="path-list"><a href="{base}model/"><div><strong>מסמך היסוד המלא</strong><span>ההסבר המחבר, הביסוס לכל עיקרון והתחזיות לבדיקה.</span></div><span aria-hidden="true">←</span></a><a href="{base}research/"><div><strong>מאגר המחקרים</strong><span>{len(records)} פריטים ביבליוגרפיים עם סוג מקור, סיכום ומגבלה. לא כולם ניסויים או ממצאים חיוביים.</span></div><span aria-hidden="true">←</span></a><a href="{base}process/"><div><strong>התהליך והבחירה בו</strong><span>נשימה, דמיון, חיבור לילד בלב, דממה וחזרה לשגרה.</span></div><span aria-hidden="true">←</span></a><a href="{base}experiment/"><div><strong>הניסוי והמדידה</strong><span>מה נבדוק לפני, במהלך ואחרי, וכיצד נבחין בין רוגע מיידי לשינוי ביומיום.</span></div><span aria-hidden="true">←</span></a></div></section>
-<section class="section-rail"><div><div class="eyebrow">גבולות ההסבר</div><h2>תמיכה אינה<br>הבטחה</h2></div><div><p class="lead">אין צורך שכל רכיבי המודל ייבדקו באותו מחקר כדי שיהיה להם ביסוס. באותה מידה, חיבור כמה ממצאים אינו מוכיח אוטומטית את כל המעברים ביניהם.</p><p>עומק, קוהרנטיות לבבית, דפוסי מוח, חיוניות והוצאה אנרגטית הם מדדים שונים. המונח ״שחרור מטען״ אינו מדידה של חומר שמשתחרר, ודימוי אינו הוכחה לאירועי עבר.</p><a href="{base}about/">איך לקרוא את רמות התמיכה והמקורות ←</a></div></section>'''
-    return shell('להכיר שקט. ללמוד לחזור אליו.', body, base)
+def render_home(text, base):
+    return render_reader(text, 'אימון לשקט נפשי',
+                         'מה נדרש כדי ששקט עמוק יהפוך לשגרה?',
+                         base, 'home', '', include_page_head=False)
 
 
 def tags(record):
@@ -157,6 +155,7 @@ def build_site(content_dir, output, base='/'):
         if source.scheme not in ['http', 'https'] or not source.hostname:
             raise ValueError('Research source URL must use http or https and have a hostname')
     model = (content_dir / 'model.md').read_text(encoding='utf-8')
+    homepage = (content_dir / 'homepage.md').read_text(encoding='utf-8')
     manifest = output / 'site-manifest.json'
     old_generated = json.loads(manifest.read_text(encoding='utf-8')) if manifest.exists() else []
     if not isinstance(old_generated, list) or any(not isinstance(p, str) for p in old_generated):
@@ -171,7 +170,7 @@ def build_site(content_dir, output, base='/'):
         shutil.copyfile(ROOT / 'assets' / name, assets / name)
     (assets / 'research.json').write_text(json.dumps(records, ensure_ascii=False, indent=2), encoding='utf-8')
     pages = {
-        'index.html': render_home(records, base),
+        'index.html': render_home(homepage, base),
         'model/index.html': render_reader(model, 'מסמך היסוד המלא', 'המודל, הביסוס המחקרי והניסוי - לפי שבעת העקרונות.', base, 'model', 'model/'),
         'research/index.html': render_catalog(records, base),
         'about/index.html': render_about(base),
