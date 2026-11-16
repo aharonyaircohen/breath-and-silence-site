@@ -3,16 +3,16 @@
 
 **מעמד המסמך:** גרסת עבודה מחקרית לעיון. זהו מסמך מנומק של מודל ותוכנית בדיקה, לא הצהרת יעילות טיפולית, לא פרוטוקול נשימה מאושר ולא הבטחת תוצאה למשתתפים.
 
-**ליבת הרעיון:** המודל מציע שהמערכת יכולה ללמוד לחפש ולהחזיק רעש, גירויים ודריכות, ושאימון חוזר במפגש עם שקט עמוק יכול לעזור לה ללמוד מצב פנימי אחר. המטרה היא יותר מרגיעה באותו ערב: נגישות לשקט, שינוי במצב הבסיס ובתגובה לדרישות, ואפשרות ליותר חיוניות ותפקוד.
+**ליבת הרעיון:** המודל מציע שהמערכת יכולה ללמוד לחפש ולהחזיק רעש, גירויים ודריכות, ושאימון חוזר במפגש עם שקט עמוק יכול לעזור לה ללמוד מצב פנימי אחר, לרבות דממה ללא מחשבה. יאיר משער שמוח במצב אידיאלי יכול להישאר כך כ־20 דקות ברצף; זהו כיוון לאימון ולמחקר, לא מצב בריאות אידיאלי מוכח. המטרה היא יותר מרגיעה באותו ערב: נגישות לשקט, שינוי במצב הבסיס ובתגובה לדרישות, ואפשרות ליותר חיוניות ותפקוד.
 
 ### ניווט
 - [א. המודל](#model)
 - [ב. הביסוס המחקרי לפי עקרונות](#evidence)
 - [ג. התהליך והניסוי](#experiment)
 - [ד. מסקנה וגבולות השימוש](#conclusion)
-- [מפת הראיות המלאה](research/evidence-map.md)
-- [ספריית המקורות וכרטיסי התיעוד](research/sources.md)
-- [הספרייה במבנה נתונים](research/library.json)
+- [מפת הראיות המלאה](/breath-and-silence-site/research/)
+- [ספריית המקורות וכרטיסי התיעוד](/breath-and-silence-site/research/)
+- [הספרייה במבנה נתונים](/breath-and-silence-site/assets/research.json)
 
 ### איך לקרוא
 
@@ -27,7 +27,11 @@
 
 התהליך מבקש להזמין אדם לפגוש עומק של שקט שאינו מוכר לו בהכרח ביומיום, ולתרגל את הנגישות אליו שוב ושוב. לפי המודל, התנסות חוזרת כזאת עשויה לשנות לא רק את החוויה בזמן התרגול, אלא גם את נקודת המוצא ואת אופן התגובה בזמן פעילות וסטרס.
 
-הכוונה אינה להעלים מחשבות, להימנע מכל גירוי או להישאר במצב מדיטטיבי לאורך כל היום. הכוונה היא להפחית תלות ברעש ובהפעלה מתמשכת, ולאפשר יותר גמישות: להיות פעיל כשצריך, ולחזור לשקט בלי להילחם במערכת.
+נקודת המוצא נשענת גם על מאמרי יאיר ״הדממה הפנימית - החיוניות הנולדת מכיבוי התודעה האנושית״ ו״טבלה מורחבת - השקט הפנימי״. אלה מקורות חווייתיים ורעיוניים של המודל, לא ניסויים המאמתים אותו. לפי ההשערה, המצב הרגיל רחוק מהיכולת לשהות בדממה ללא מחשבה כ־20 דקות ברצף, ויש בו מידה מסוימת של תלות במציאות החיצונית כמקור לגירוי ולהפעלה.[122][123]
+
+הכוונה כוללת רכישת יכולת לשהות ללא מחשבה בערנות ובהירות, לא רק להתבונן במחשבות או להפחית סטרס. יכולת נרכשת אינה הוראה לכפות על מחשבות להיעלם: מחשבה שעולה אינה כישלון, ואין דרישה להימנע מכל גירוי או להישאר במדיטציה לאורך כל היום. השאיפה היא להפחית תלות ברעש ובהפעלה מתמשכת, ולאפשר יותר גמישות: להיות פעיל ולחשוב כשצריך, ולחזור לשקט בלי להילחם במערכת. ״כיבוי״ הוא תיאור חווייתי, לא יעד של אובדן הכרה או הפסקת פעילות המוח.
+
+יעד עשרים הדקות אינו נורמה קלינית או מבחן למשתתפים. הטבלאות במאמרי המקור לא תוקפו; אין להסיק מדקות דממה ריווי חמצן (SpO2), שונות דופק (HRV), ערכי הוקינס או סיכון למחלות. תיאור כיוון לאימון אינו מכשיר מיפוי רפואי של דקות.[122][123]
 
 ## 2. שבעת עקרונות הליבה
 
@@ -36,21 +40,21 @@
 | P1 | ״המוח מתמכר לרעש״ ולגירויים | חיפוש גירוי והקושי לשהות בלעדיו יכולים להפוך להרגל; התהליך הוא במובן זה סוג של גמילה ולמידה מחדש. |
 | P2 | ״סטרס לא מודע כרוני״ | עומס מחשבתי ורגשי עשוי לפעול ברקע גם בלי דיווח מודע מלא על מתח. |
 | P3 | העומס צורך ״המון אנרגיה״ ומשאבים | הדריכות עלולה להכביד על הגוף, על הקשב ועל החיוניות; רגיעה עשויה לפנות יכולת לחיות, להרגיש ולתפקד. |
-| P4 | ליבת התהליך היא אימון מרעש לשקט, לרבות שקט עמוק ולא־מוכר | איכות החוויה והעומק חשובים במודל, לא רק מספר דקות התרגול. |
+| P4 | ליבת התהליך היא אימון מרעש לשקט, לרבות שקט עמוק ולא־מוכר ודממה ללא מחשבה | כ־20 דקות רצופות הן יעד משוער, לא רף מחייב; נבחנים גם איכות החוויה, ערנות ועומק, ולא רק דקות הישיבה. |
 | P5 | ״שחרור מטען לא מודע״ אינו מחייב הבנה מודעת | נשימה, דמיון, חיבור לילד בלב ודממה עשויים לאפשר שינוי גם בלי לפענח את מקור התגובה. |
 | P6 | הכוונה היא לשינוי במצב הבסיס וגם בתגובה לסטרס | השקט אמור להיות נגיש יותר גם מחוץ למפגש ובתוך דרישות החיים. |
 | P7 | עשוי להופיע שיפור רחב שנשמר ואז דועך בחזרה לשגרה | גודל השינוי, תחומיו, שימורו ודעיכתו הם שאלות לניסוי, לא תוצאה אחידה שמובטחת מראש. |
 
 ## 3. ההסבר המחבר
 
-**נקודת המוצא המוצעת:** הרגלי חיפוש גירוי ורעש מתקיימים לצד פעילות מחשבתית ורגשית מתמשכת. חלקה אינו במודעות מלאה.
+**נקודת המוצא המוצעת:** הרגלי חיפוש גירוי ורעש מתקיימים לצד פעילות מחשבתית ורגשית מתמשכת. חלקה אינו במודעות מלאה. המודל מתאר גם תלות מסוימת בהפעלה מן המציאות החיצונית, לעומת היכולת המשוערת לשהות בדממה ללא מחשבה.
 
 **ההשלכה המוצעת:** המערכת מחזיקה דריכות והפעלה גם כשאין צורך מיידי בהן. לפי המודל, הדבר מכביד על משאבי הגוף, על הקשב ועל תחושת החיוניות.
 
 **האימון המוצע:** תרגול חוזר המשלב נשימה, עבודה עם הדמיון, חיבור לילד בלב ושהייה בדממה. הרצף שנדון מתחיל בנשימה, ממשיך בעבודה החווייתית ונפתח לשהייה בשקט; אין לקבוע כאן שיטת נשימה או להעמיק אותה מעבר להכשרה ולמסגרת המתאימות.
 
 **שני תהליכים שעשויים להשתלב:**
-- הליבה: היכרות חוזרת עם שקט והעמקה בו, כך שהשקט נעשה מוכר ונגיש יותר.
+- הליבה: היכרות חוזרת עם שקט והעמקה בו, לרבות שהייה ללא מחשבה, כך שהיכולת נעשית מוכרת ונגישה יותר.
 - תהליך מסייע: שינוי או שחרור של תגובות ומטען רגשי, גם ללא תובנה מילולית.
 
 **התוצאה המוצעת:** נקודת מוצא רגועה יותר, פחות הפעלה אוטומטית ויותר יכולת לתפקד ולהרגיש חיוניות. אין הכרח ששחרור יהיה שלב מוקדם לשקט, ואין ציפייה שכל משתתף יחווה את אותו רצף או אותה עוצמה.
@@ -64,7 +68,9 @@
 | רעש | גירויים חיצוניים ופעילות פנימית מסיחה או מתמשכת; לא טענה שכל קול, מחשבה או פעילות מזיקים. |
 | מתמכר / גמילה | שפת המודל לתגמול, חזרתיות, צורך בגירוי וקושי בלעדיו. אין זו אבחנה קלינית אוטומטית למשתתפים. |
 | מצב בסיס | המצב שאליו האדם נוטה לחזור ביומיום, לא רק מדידה מיד לאחר מדיטציה. נחקרים בנפרד גם תגובה לדרישה ומהירות התאוששות. |
-| עומק השקט | איכות חווייתית, לא רק משך או עצימות. עומק מדווח, הרפיה, ספיגה, חוויה מיסטית, EEG וקוהרנטיות אינם אותו מדד. |
+| דממה ללא מחשבה | אפשרות של שהייה ערה ובהירה ללא מחשבה, לא רק התבוננות בה. בספרות קרובים לכך mental silence ו־thoughtless awareness; מודעות ללא תוכן (content-free awareness) מתייחסת להיעדר תוכן חווייתי רחב יותר, ואין להניח שכל המונחים מתארים מצב זהה. |
+| כ־20 דקות רצופות | השערת יאיר לגבי יכולת במצב אידיאלי, לא נורמה קלינית, סולם רפואי או דרישת ביצוע. תדירות חוויות הדממה, משכן הרצוף וזמן התרגול הכולל הם משתנים נפרדים. |
+| עומק השקט | איכות חווייתית הכוללת במודל גם את האפשרות להיעדר מחשבה בערנות, ולא רק משך או עצימות. עומק מדווח, הרפיה, ספיגה, חוויה מיסטית, EEG וקוהרנטיות אינם אותו מדד. |
 | מטען לא מודע | מונח ההסבר של המודל לעומס ולתגובות שלא בהכרח מזוהים במודע. אין פירושו חומר או אנרגיה אגורה שכבר נמדדו. |
 | שחרור | עשוי להתבטא בפחות מצוקה, תגובתיות או מאמץ, או בחוויית הקלה. אינו מחייב בכי, רעד, פורקן או שחזור סיפור. |
 | הילד בלב | חיבור חווייתי ודמיוני לילד הפנימי. דימוי אינו הוכחה לאירוע היסטורי, ואינו הנחיה לחפש זיכרון נסתר. |
@@ -144,6 +150,8 @@ GUTS מציעה שהיעדר איתותי ביטחון מאפשר הפעלת ס�
 
 מודל Deep Rest מחבר בין דריכות, הקצאת משאבים ומנוחה עמוקה שעשויה לאפשר תהליכי שיקום. הוא נותן מסגרת משלבת למנגנון שאנחנו מציעים, תוך שהוא מגדיר חלק מהחיבורים כהשערות.[50]
 
+קשר ישיר יותר בין דממה לחיוניות נמצא בסקר חתך של 343 מתרגלים ותיקים בסהג׳ה יוגה (Sahaja Yoga): תדירות החוויה של דממה מחשבתית (mental silence) נקשרה לחיוניות ולבריאות נפשית מדווחות, בעוד תדירות התרגול הפורמלי לא נקשרה במובהק למדדי SF-36. נבדקה תדירות הדממה, לא דקות רצופות ללא מחשבה. בחירה עצמית, אורח חיים וסיבתיות הפוכה אינם נשללים, ולכן זהו מתאם רלוונטי להשערה, לא הוכחה לחיסכון מטבולי או למניעת מחלות.[115]
+
 ### מגבלות שמחדדות את הטענה
 
 במחקר בבריאים לא נמצא קשר בין סטרס וחרדה מדווחים לבין חילוף החומרים במנוחה. במחקר בדידות קצרה פחתה עוררות אך גם החיוניות. לכן ״פחות מופעל״ ו״יותר חיוני״ יימדדו בנפרד; אין לראות בכל ירידה במדד פיזיולוגי שיפור.[56][57]
@@ -153,6 +161,18 @@ GUTS מציעה שהיעדר איתותי ביטחון מאפשר הפעלת ס�
 ייתכן שיפור בריכוז, בבהירות ובחיוניות לצד פחות דריכות. ייתכן גם רוגע בלי עלייה באנרגיה, או שינויים במועדים שונים. ״המון אנרגיה״ הוא ניסוח איכותני של המודל; אין כאן כימות של ״רוב״ או הבטחה לשיפור בריאותי כללי.
 
 ## 9. P4 - אימון לשקט ועומק החוויה
+
+### דממה ללא מחשבה כמושא ישיר למחקר
+
+הספרות על mental silence ו־thoughtless awareness מקרבת את הביסוס לכוונת המודל: לא רק פחות היסחפות אחר מחשבות, אלא אפשרות לחוות דממה ממש. בניסוי אקראי בעובדים במשרה מלאה, שמונה שבועות של תוכנית מכוונת־דממה הושוו להרפיה ולאי־טיפול. בניתוח לפי ההקצאה המקורית (ITT), שכלל 178 משתתפים, דווח יתרון בסטרס תעסוקתי ובמצב רוח מדוכא, אך לא נמצא יתרון מובהק בחרדה. הנשירה הייתה כ־32%, הושלמו נתונים בשיטת התצפית האחרונה הזמינה ולא נערך מעקב לאחר הקורס; ההקצאה לתוכנית אינה הקצאה למשך הדממה שהושג.[114]
+
+במחקר MRI נבדקו 23 מתרגלי סהג׳ה יוגה ותיקים וקבוצת ייחוס מותאמת של 23. אצל המתרגלים, דירוג בדיעבד של עומק הדממה ומשכה נקשר לחומר אפור באזור קדם־מצחי הכולל את פיתול החגורה הקדמי ולקישוריות מוחית. הדירוג כלל היעדר דממה, שניות, פחות משלוש דקות, יותר משלוש דקות ומרבית הזמן. המחקר תצפיתי והמדגם משותף לפרסום הדמיה קודם; אין כאן בידוד סיבתי של העומק או תיקוף לנורמה של עשרים דקות.[116]
+
+בניסוי מוחי קטן הוקצו 45 אנשים לאימון סהג׳ה יוגה או להמתנה. לאחר ארבעה שבועות ו־16 שעות אימון נכללו בניתוח 12 מסיימי אימון ו־30 בהמתנה, ונמצאו הבדלים בין הקבוצות בשינוי בצפיפות החומר האפור ובפעילות במנוחה באזור הקשור לבקרה. רווחה ועייפות נמדדו רק בקבוצת האימון: השיפור בתוכה אינו יתרון רגשי שהוכח מול הביקורת. גם כאן לא בודד היעדר המחשבות כגורם לשינוי.[117]
+
+מחקר מקרה במתרגל מומחה אחד בחן מודעות ללא תוכן (content-free awareness) באמצעות EEG ו־fMRI. מתוך 30 דקות מדיטציה, רק חמש האחרונות נותחו כמייצגות את המצב, לפי דיווח בדיעבד; ב־EEG לא נמצאו סימני שינה. הדופק ירד ו־HRV עלה, אך קצב הנשימה דווקא עלה בשלב הזה. זו דוגמה לאפשרות לחקור חוויה מדווחת של ערות ללא תוכן, לא הוכחת 30 דקות רצופות ללא מחשבה, לא הפסקת פעילות מוחית ולא דפוס גופני מחייב לדממה.[118]
+
+יש להבחין בין אלה לבין ריקון מחשבתי ספונטני (mind blanking). במחקר ב־62 אנשים בזמן משימת קשב, ריקון כזה נקשר לשיבושי ביצוע ולשיבוש בעיבוד חזותי. אין לזהות אותו אוטומטית עם דממה מדיטטיבית ערה: היעדר מחשבה מדווח לבדו אינו מבחין בין בהירות רצויה לבין פגיעה רגעית בקשב.[120]
 
 ### עומק הוא ממד שנמדד
 
@@ -174,11 +194,13 @@ HeartMath מציעה אימון חוזר ברגש רגוע או חיובי וב�
 
 ### מסקנת העיקרון
 
-יש בסיס להתייחס לעומק ולאיכות כממדים משמעותיים, ולא רק לדקות. התרומה הסיבתית של עומק השקט עצמו לשינוי מתמשך נשארת השערה נתמכת בעקיפין ובמתאמים, לא בידוד ניסויי מספק. אין להחליף את טענת העומק בטענה על קבלה או קוהרנטיות בלי הסכמה.
+יש בסיס ישיר לחקר דממה ללא מחשבה, קשרים בין חווייתה לבין חיוניות ומדדים מוחיים, וניסויים בתוכניות שמכוונות אליה. עם זאת, התרומה הסיבתית הנפרדת של הדממה ועומקה לשינוי מתמשך עדיין לא בודדה במידה מספקת. לא תוקפו כ־20 דקות רצופות כמצב אידיאלי, ואין להחליף את יעד הדממה בהתבוננות במחשבות, בקבלה או בקוהרנטיות.
+
+גם שאלת המדידה אינה נותנת תוקף לטבלאות שבמקורות הרעיון. סקירה של 22 מחקרים על קינסיולוגיה יישומית ומיוחדת מצאה ראיות לא מספקות לדיוק האבחוני ולתקפות תגובות השריר שנבדקו. זו סקירת רקע על קינסיולוגיה, לא בדיקה ישירה של סולם הוקינס ולא ראיה נגד דממה; היא אינה מכיילת דקות דממה או ערכי בריאות.[121]
 
 ### התחזית שלנו
 
-ייתכן קשר בין איכות ועומק החוויה לבין שינוי מאוחר יותר. קשר כזה בסקר יהיה מתאמי: גם שיפור מוקדם, ציפיות או תנאים אחרים עשויים להשפיע על שניהם. לא נציב יעד עומק מחייב ולא נשתמש בעצימות, בכי או קצב נשימה כתחליף לעומק.
+ייתכן קשר בין תדירות הדממה ללא מחשבה, משכה הרצוף ואיכות החוויה לבין שינוי מאוחר יותר. קשר כזה בסקר יהיה מתאמי: גם שיפור מוקדם, ציפיות או תנאים אחרים עשויים להשפיע על שניהם. כ־20 דקות נשארות השערה על יכולת אפשרית, לא יעד עומק מחייב; עצימות, בכי וקצב נשימה אינם תחליף לעומק.
 
 ## 10. P5 - ״שחרור מטען לא מודע״
 
@@ -210,9 +232,11 @@ HeartMath מציעה אימון חוזר ברגש רגוע או חיובי וב�
 
 אימון קשיבות נקשר גם לשינוי בתגובת אמיגדלה לתמונות מחוץ למדיטציה. במחקר TestEdge נמצאו אצל בעלי חרדת מבחנים גבוהה שינויים ב־HRV ובקוהרנטיות במנוחה ללא שימוש מודע בטכניקה. ההקשרים, האוכלוסיות והמדדים שונים.[47][81]
 
+בניסוי סהג׳ה יוגה ב־59 אנשים עם אסתמה בינונית עד קשה, התוכנית נוספה לטיפול הרפואי הרגיל למשך ארבעה חודשים. נמצא יתרון בתגובתיות־יתר של דרכי הנשימה ובחלק ממדדי מצב הרוח, אך לא בציון הכולל של איכות החיים הקשורה לאסתמה או בציון האסתמה המשולב; במעקב כעבור חודשיים לא היה הבדל מובהק בין הקבוצות. זו תועלת מוגבלת בחלק מהמדדים במחלה קיימת, לא מניעת מחלות, לא מדידת מצב בסיס אידיאלי ולא בידוד של משך הדממה.[119]
+
 ### הפרשנות במודל
 
-למידה יכולה להתבטא מעבר לתרגול, אבל ״בסיס״ ו״תגובה לסטרס״ אינם אותה תוצאה. ייתכן שיפור בהתאוששות ובגמישות גם בלי שינוי ברור בכל מדדי המנוחה.
+למידה יכולה להתבטא מעבר לתרגול, אבל ״בסיס״ ו״תגובה לסטרס״ אינם אותה תוצאה. ייתכן שיפור בהתאוששות ובגמישות גם בלי שינוי ברור בכל מדדי המנוחה. היכולת המשוערת לשהות כ־20 דקות ללא מחשבה מתייחסת למצב דממה בזמן תרגול; השפעתה האפשרית על היומיום היא שאלה נפרדת, לא ציפייה להיעדר מחשבות בזמן פעילות.
 
 ### התחזית שלנו
 
@@ -238,8 +262,8 @@ HeartMath מציעה אימון חוזר ברגש רגוע או חיובי וב�
 |---|---|---|
 | P1 | תגמול, הרגל, חיפוש גירוי ושינוי שימוש עתידי | השרשרת הכוללת לרעש פנימי ולשינוי נקודת המוצא |
 | P2 | הפעלה ללא מודעות מלאה וקשרים להמשכיות תגובות | היקף ומשקל העומס הסמוי בחיי היומיום |
-| P3 | מחיר אנרגטי של סטרס, הפרעה קוגניטיבית ושינויי חיוניות | החיבור הכמותי בין התחומים והקצאת המשאבים בכל אדם |
-| P4 | מדידת עומק, קשרים לתוצאות וסיבתיות של רכיבי איכות | תרומה סיבתית נפרדת של עומק השקט עצמו |
+| P3 | מחיר אנרגטי של סטרס, הפרעה קוגניטיבית, שינויי חיוניות ומתאם עם תדירות דממה | החיבור הכמותי בין התחומים, הסיבתיות והקצאת המשאבים בכל אדם |
+| P4 | מדידת עומק, קשרים לתוצאות וסיבתיות של רכיבי איכות; מחקר ישיר על דממה וניסויים בתוכניות מכוונות־דממה | תרומה סיבתית נפרדת של הדממה ועומקה, והיעד המשוער של כ־20 דקות רצופות |
 | P5 | שינוי תגובות ללא תובנה סיפורית או ידיעת תוכן האימון | פירוש השינוי כ״שחרור מטען״ ומנגנונו בתהליך המשולב |
 | P6 | השפעות מסוימות מחוץ לתרגול ובזמן דרישה | אילו מרכיבי מצב הבסיס משתנים ובאיזו דרך |
 | P7 | שיפורים ומעקב בתחומים ובמסגרות שונות | גודל, שונות ושימור בתוכנית שלנו |
@@ -279,11 +303,14 @@ HeartMath מציעה אימון חוזר ברגש רגוע או חיובי וב�
 שאלות משנה:
 - האם השינוי הוא רק מיידי או נוכח גם ביום רגיל?
 - האם עומק ואיכות חוויה קשורים לשינוי מאוחר יותר, מעבר למספר המפגשים ולזמן התרגול?
+- האם תדירות הדממה ללא מחשבה ומשכה הרצוף קשורים בנפרד לחיוניות ולנגישות לשקט ביומיום, וכיצד אפשר להבחין בדיווח בין דממה ערה לבין ריקון קשב או ישנוניות?
 - האם שינויים מופיעים גם ללא דיווח על תובנה או פורקן?
 - האם המשך תרגול וחזרה לגירויים קשורים לשימור או לדעיכה?
 - מי משתפר, מי אינו משתנה ומי מדווח על קושי או החמרה?
 
 אלה שאלות נבדקות, לא תוצאות שהמשתתף אמור לספק. סקר לפני–אחרי ללא השוואה יכול לתאר שינוי, אך לא לבודד לבדו את השפעת התרגול מציפיות, הקשר וזמן.
+
+השאלה על משך הדממה מגדירה כיוון מחקר, לא שינוי בסקר או בתוכנית ההפעלה. בדיקת ההשערה על כ־20 דקות תדרוש הגדרה ומדידה נפרדות של רצף ללא מחשבה, לצד ערנות ובהירות; שיפור בסקר הקיים לא ייחשב כשלעצמו תיקוף של היעד או של טבלאות בריאות.
 
 ## 16. תוכנית מדידה מוצעת
 
@@ -362,9 +389,11 @@ HeartMath מציעה אימון חוזר ברגש רגוע או חיובי וב�
 <a id="conclusion"></a>
 # ד. מסקנה וגבולות השימוש
 
-המודל מחבר הרגלי גירוי, סטרס מתמשך, השקעת משאבים, אימון בשקט ושינוי אפשרי בתגובה ובתפקוד. הספרות שנאספה נותנת בסיס משמעותי לרכיבים ולחלק מהחיבורים, כולל מדידות שאינן מסתכמות בדיווח ״הרגשתי רגוע״.
+המודל מחבר הרגלי גירוי, סטרס מתמשך, השקעת משאבים, אימון בשקט ושינוי אפשרי בתגובה ובתפקוד. הספרות שנאספה נותנת בסיס משמעותי לרכיבים ולחלק מהחיבורים, כולל מחקר ישיר על דממה מחשבתית ומודעות ללא תוכן ומדידות שאינן מסתכמות בדיווח ״הרגשתי רגוע״. מאמרי יאיר נשמרים כמקורות הרעיון, לא כניסויים המאמתים אותו.[122][123]
 
 הניסוח ההוגן הוא: **מודל עבודה מגובה בממצאים ובמנגנונים רלוונטיים, עם השערות מפורשות לגבי החיבור ביניהם ותפקידו הייחודי של עומק השקט.** אין להציגו כהוכחה שכל אדם מתמכר לרעש, שמשתחרר חומר מדיד, או ששבוע מבטיח ריפוי, שיפור בכל מדד או שינוי בסיס יציב.
+
+ההשערה כוללת במפורש יכולת לשהות בדממה ללא מחשבה כ־20 דקות ברצף במצב אידיאלי. זהו כיוון לאימון ולבדיקה, לא בריאות אידיאלית מוכחת, נורמה קלינית או מבחן למשתתף. אין לכפות היעדר מחשבות או לכוון לאובדן הכרה, ואין להסיק מדקות דממה SpO2, HRV, ערכי הוקינס או סיכון למחלות.
 
 הניסוי שלנו יכול להוסיף נתונים על התהליך המסוים, גודל השינוי, השונות בין המשתתפים והשימור. תוצאה חיובית תתפרש לפי המדידה וההשוואה שבוצעו, ותוצאה של היעדר שיפור או החמרה תישמר באותה מפת למידה.
 
@@ -378,67 +407,8 @@ HeartMath מציעה אימון חוזר ברגש רגוע או חיובי וב�
 
 ## נספחי עבודה
 
-- [מפת הראיות לכל העקרונות](research/evidence-map.md)
-- [ספריית המקורות: שיטות, תוצאות, מגבלות ופסקאות שאומתו](research/sources.md)
-- [נתוני הספרייה המאוחדת](research/library.json)
+- [מפת הראיות לכל העקרונות](/breath-and-silence-site/research/)
+- [ספריית המקורות: שיטות, תוצאות, מגבלות ופסקאות שאומתו](/breath-and-silence-site/research/)
+- [נתוני הספרייה המאוחדת](/breath-and-silence-site/assets/research.json)
 
 רשימת המקורות שלהלן כוללת את הפריטים המצוטטים בגוף המסמך. הקטלוג המלא כולל גם מקורות רלוונטיים נוספים וקישורי רקע שלא קיבלו מעמד של ביסוס ראשי.
-
-## Sources
-
-[1] https://pmc.ncbi.nlm.nih.gov/articles/PMC10082134 — The energetic cost of allostasis and allostatic load.
-[2] https://www.mdpi.com/1660-4601/15/3/464 — Generalized Unsafety Theory of Stress: Unsafe Environments and Conditions, and the Default Stress Response
-[5] https://europepmc.org/article/MED/37423094 — Cellular allostatic load is linked to increased energy expenditure and accelerated biological aging.
-[10] https://pmc.ncbi.nlm.nih.gov/articles/PMC2040428 — Short-term meditation training improves attention and self-regulation.
-[18] https://journals.plos.org/plosone/article?id=10.1371%2Fjournal.pone.0243488 — Heart rate variability is enhanced during mindfulness practice: A randomized controlled trial involving a 10-day online-based mindfulness intervention.
-[19] https://pmc.ncbi.nlm.nih.gov/articles/PMC8243562 — The Effects of Mindfulness and Meditation on Vagally Mediated Heart Rate Variability: A Meta-Analysis.
-[28] https://pmc.ncbi.nlm.nih.gov/articles/PMC12592435 — Neural and molecular changes during a mind-body reconceptualization, meditation, and open label placebo healing retreat: an observational study
-[30] https://pubmed.ncbi.nlm.nih.gov/28497544 — Inducing unconscious stress: Cardiovascular activity in response to subliminal presentation of threatening and neutral words.
-[31] https://pubmed.ncbi.nlm.nih.gov/25100269 — Does unconscious stress play a role in prolonged cardiovascular stress recovery?
-[32] https://pmc.ncbi.nlm.nih.gov/articles/PMC6099124 — Smartphone Restriction and Its Effect on Subjective Withdrawal Related Scores.
-[34] https://pmc.ncbi.nlm.nih.gov/articles/PMC8633885 — Alpha and theta oscillations are inversely related to progressive levels of meditation depth.
-[35] https://pmc.ncbi.nlm.nih.gov/articles/PMC11332311 — Emotional Changes during Imagery Rescripting of Aversive Social Memories in Social Anxiety Disorder: A Randomized Controlled Trial.
-[38] https://jhourney.io/blog/life-in-hd-an-investigation-of-the-jhanas-impact-on-jhourney-retreat-attendees — Life in HD: An Investigation of the Jhanas' Impact on Jhourney Retreat Attendees
-[39] https://pmc.ncbi.nlm.nih.gov/articles/PMC13401590 — Author Correction: Neural and molecular changes during a mind-body reconceptualization, meditation, and open label placebo healing retreat: an observational study.
-[40] https://pubmed.ncbi.nlm.nih.gov/39158465 — Fast-forward to boredom: How switching behavior on digital media makes people more bored.
-[43] https://pmc.ncbi.nlm.nih.gov/articles/PMC3734786 — Effortless awareness: using real time neurofeedback to investigate correlates of posterior cingulate cortex activity in meditators' self-report.
-[44] https://pubmed.ncbi.nlm.nih.gov/23538911 — Mindfulness training improves working memory capacity and GRE performance while reducing mind wandering.
-[46] https://pubmed.ncbi.nlm.nih.gov/27054503 — Internet-based instructor-led mindfulness for work-related rumination, fatigue, and sleep: Assessing facets of mindfulness as mechanisms of change. A randomized waitlist control trial.
-[47] https://europepmc.org/article/MED/23125828 — Effects of mindful-attention and compassion meditation training on amygdala response to emotional stimuli in an ordinary, non-meditative state.
-[48] https://pubmed.ncbi.nlm.nih.gov/11001761 — Effects of mental stress on insulin-mediated glucose metabolism and energy expenditure in lean and obese women.
-[49] https://nature.com/articles/hr2007143.pdf — Influence of Mental Stress on Cardiovascular Function as Evaluated by Changes in Energy Expenditure
-[50] https://pmc.ncbi.nlm.nih.gov/articles/PMC11003855 — Deep rest: An integrative model of how contemplative practices combat stress and enhance the body's restorative capacity.
-[51] https://www.mdpi.com/1660-4601/20/3/2537 — Mindfulness Practice versus Physical Exercise in Enhancing Vitality
-[52] https://europepmc.org/article/MED/39244428 — Effectiveness of meditation for fatigue management: Insight from a comprehensive systematic review and meta-analysis.
-[56] https://pubmed.ncbi.nlm.nih.gov/32053394 — Life stress and background anxiety are not associated with resting metabolic rate in healthy adults.
-[57] https://doi.org/10.1177/0146167217733073 — Solitude as an Approach to Affective Self-Regulation.
-[60] https://pubmed.ncbi.nlm.nih.gov/20410249 — Prolonged cardiac effects of momentary assessed stressful events and worry episodes.
-[61] https://www.researchgate.net/publication/47636852_Effects_of_momentary_assessed_stressful_events_and_worry_episodes_on_somatic_health_complaints — Effects of momentary assessed stressful events and worry episodes on somatic health complaints
-[62] https://pmc.ncbi.nlm.nih.gov/articles/PMC6333205 — The secret ingredient in mindfulness interventions? A case for practice quality over quantity.
-[65] https://pmc.ncbi.nlm.nih.gov/articles/PMC8193519 — Meditation training modulates brain electric microstates and felt states of awareness.
-[68] https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0201388 — Effects of heart rate variability biofeedback training in athletes exposed to stress of university examinations.
-[69] https://pmc.ncbi.nlm.nih.gov/articles/PMC7642907 — Eight weeks of device-guided slow breathing decreases sympathetic nervous reactivity to stress in posttraumatic stress disorder.
-[70] https://link.springer.com/article/10.1007/s10608-021-10233-5 — Psychological and Physiological Effects of Imagery Rescripting for Aversive Autobiographical Memories
-[71] https://pmc.ncbi.nlm.nih.gov/articles/PMC6346649 — Implicit but not explicit extinction to threat-conditioned stimulus prevents spontaneous recovery of threat-potentiated startle responses in humans.
-[72] https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0246038 — Is a meditation retreat the better vacation? effect of retreats and vacations on fatigue, emotional well-being, and acting with awareness.
-[76] https://pmc.ncbi.nlm.nih.gov/articles/PMC5737497 — Ultra-Brief Mindfulness Training Reduces Alcohol Consumption in At-Risk Drinkers: A Randomized Double-Blind Active-Controlled Experiment.
-[77] https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2016.00425/full — The Implicit Positive and Negative Affect Test: Validity and Relationship with Cardiovascular Stress-Responses
-[78] https://pmc.ncbi.nlm.nih.gov/articles/PMC11629179 — Decoding Depth of Meditation: Electroencephalography Insights From Expert Vipassana Practitioners.
-[79] https://pmc.ncbi.nlm.nih.gov/articles/PMC9498345 — The biological dimensions of transcendent states: A randomized controlled trial.
-[81] https://pubmed.ncbi.nlm.nih.gov/20559707 — Emotion self-regulation, psychophysiological coherence, and test anxiety: results from an experiment using electrophysiological measures.
-[82] https://pmc.ncbi.nlm.nih.gov/articles/PMC3888936 — Reorganization of the brain and heart rhythm during autogenic meditation.
-[83] https://pmc.ncbi.nlm.nih.gov/articles/PMC8469888 — HeartMath Coherence Model Throws New Light on Arka Dhyana Intuitive Meditation.
-[84] https://pmc.ncbi.nlm.nih.gov/articles/PMC4179616 — Cardiac coherence, self-regulation, autonomic stability, and psychosocial well-being.
-[87] https://www.labfront.com/case-study/physiological-effects-of-meditation — QUANTUM Study: Physiological Effects of Meditation — Labfront case study
-[88] https://clinicaltrials.gov/study/NCT06583395 — Quest to Analyze One Thousand Humans Meditating (QUANTUM) — NCT06583395
-[89] https://www.aeaweb.org/articles?id=10.1257%2Faer.20210867 — Digital Addiction
-[90] https://nature.com/articles/s41467-020-19607-x — A computational reward learning account of social media engagement
-[92] https://doi.org/10.1037/adb0000940 — Randomized trial of mindfulness- and reappraisal-based regulation of craving training among daily cigarette smokers.
-[95] https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0293467 — Restricting social networking site use for one week produces varied effects on mood but does not increase explicit or implicit desires to use SNSs: Findings from an ecological momentary assessment study.
-[96] https://www.sciencedirect.com/science/article/pii/S0306453017304109 — Acceptance lowers stress reactivity: Dismantling mindfulness training in a randomized controlled trial
-[97] https://pmc.ncbi.nlm.nih.gov/articles/PMC6681655 — Psychological mechanisms driving stress resilience in mindfulness training: A randomized controlled trial.
-[102] https://pmc.ncbi.nlm.nih.gov/articles/PMC5628620 — Fear reduction without fear through reinforcement of neural activity that bypasses conscious exposure.
-[103] https://europepmc.org/article/MED/29511106 — Towards an unconscious neural reinforcement intervention for common fears.
-[104] https://pmc.ncbi.nlm.nih.gov/articles/PMC6596227 — Eye-Movement Intervention Enhances Extinction via Amygdala Deactivation.
-[106] https://pure.uva.nl/ws/files/52266977/2043808719850733.pdf — Investigating the effects of imagery rescripting on emotional memory: A series of analogue studies
-[107] https://pmc.ncbi.nlm.nih.gov/articles/PMC7115861 — No persistent attenuation of fear memories in humans: A registered replication of the reactivation-extinction effect.
