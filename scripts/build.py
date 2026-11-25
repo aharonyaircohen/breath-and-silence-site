@@ -105,6 +105,51 @@ def render_home(text, base):
                          base, 'home', '', include_page_head=False)
 
 
+RESULT_GROUPS = {
+    'immediate': ('מיד אחרי תרגול', 'סך הכול השוואות: 7', 'מיד בסיום התרגול', ''),
+    'challenge': ('אחרי שבוע האתגר', 'סך הכול משתתפים: 5', 'יום עד יומיים אחרי האתגר',
+                  'בהרגשה גופנית כללית נכללו 4 משתתפים שענו בשני השאלונים.'),
+}
+RESULT_SCORE = re.compile(r'(?:10|[0-9](?:\.[0-9])?)')
+
+
+def render_results(results, base):
+    if not isinstance(results, dict) or results.keys() != RESULT_GROUPS.keys():
+        raise ValueError('Results input must contain only the approved aggregate groups')
+    groups = []
+    for key, (title, count, end_label, note) in RESULT_GROUPS.items():
+        rows = results[key]
+        if not isinstance(rows, list) or not rows:
+            raise ValueError('Results group must have aggregate rows')
+        stages = (('opening', 'פתיחה'), ('ending', end_label))
+        legend = ''.join(f'<li class="result-{stage}">{esc(label)}</li>' for stage, label in stages)
+        measures = []
+        for row in rows:
+            if (not isinstance(row, list) or len(row) != 3 or any(not isinstance(item, str) for item in row)
+                    or not row[0].strip() or any(not RESULT_SCORE.fullmatch(score) for score in row[1:])):
+                raise ValueError('Results row must be a measure label and two valid aggregate scores')
+            name, *scores = row
+            values = []
+            for (stage, label), score in zip(stages, scores, strict=True):
+                units, _, tenths = score.partition('.')
+                width = 10 * int(units) + int(tenths or '0')
+                # The SVG is only the decorative bar, not the label or number.
+                values.append(f'<div class="result-bar"><dt class="result-sr">{esc(label)}</dt>'
+                              f'<dd class="result-{stage}" dir="ltr">'
+                              '<svg aria-hidden="true" focusable="false" viewBox="0 0 100 10" preserveAspectRatio="none">'
+                              f'<rect class="result-fill" width="{width}" height="10" rx="1" /></svg>'
+                              f'<data value="{esc(score)}">{esc(score)}</data></dd></div>')
+            measures.append(f'<li class="result-measure"><h3>{esc(name)}</h3>'
+                            f'<dl>{"".join(values)}</dl></li>')
+        foot = f'<p class="result-note">{esc(note)}</p>' if note else ''
+        groups.append(f'<section class="result-group" aria-labelledby="result-{key}">'
+                      f'<h2 id="result-{key}">{esc(title)}</h2><p class="result-count">{esc(count)}</p>'
+                      f'<ul class="result-legend" aria-hidden="true">{legend}</ul>'
+                      f'<ul class="result-measures">{"".join(measures)}</ul>{foot}</section>')
+    body = '<article class="results-page"><h1>תוצאות</h1>' + ''.join(groups) + '</article>'
+    return shell('תוצאות', body, base, 'results', 'results/')
+
+
 def tags(record):
     status = STATUSES.get(record['evidence_status'], '')
     kind = KINDS.get(record['kind'], '')
@@ -157,7 +202,7 @@ def build_site(content_dir, output, base='/'):
     model = (content_dir / 'model.md').read_text(encoding='utf-8')
     homepage = (content_dir / 'homepage.md').read_text(encoding='utf-8')
     preparation = (content_dir / 'preparation.md').read_text(encoding='utf-8')
-    results = (content_dir / 'results.md').read_text(encoding='utf-8')
+    results = render_results(json.loads((content_dir / 'results.json').read_text(encoding='utf-8')), base)
     manifest = output / 'site-manifest.json'
     old_generated = json.loads(manifest.read_text(encoding='utf-8')) if manifest.exists() else []
     if not isinstance(old_generated, list) or any(not isinstance(p, str) for p in old_generated):
@@ -170,14 +215,12 @@ def build_site(content_dir, output, base='/'):
     assets.mkdir(exist_ok=True)
     for name in ['site.css', 'site.js', 'favicon.svg']:
         shutil.copyfile(ROOT / 'assets' / name, assets / name)
-    shutil.copyfile(content_dir / 'challenge-feedback.png', assets / 'challenge-feedback.png')
-    shutil.copyfile(content_dir / 'immediate-stress.png', assets / 'immediate-stress.png')
     (assets / 'research.json').write_text(json.dumps(records, ensure_ascii=False, indent=2), encoding='utf-8')
     pages = {
         'index.html': render_home(homepage, base),
         'model/index.html': render_reader(model, 'מסמך היסוד המלא', 'שבעת עקרונות המודל והמחקרים הקשורים אליהם.', base, 'model', 'model/'),
         'research/index.html': render_catalog(records, base),
-        'results/index.html': render_reader(results, 'תוצאות', '', base, 'results', 'results/'),
+        'results/index.html': results,
         'about/index.html': render_about(base),
     }
     process = model.partition('<a id="process"></a>')[2].split('<a id="conclusion"></a>', 1)[0]
@@ -195,8 +238,7 @@ def build_site(content_dir, output, base='/'):
     (output / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + ''.join('<url><loc>' + esc(u) + '</loc></url>' for u in urls) + '</urlset>', encoding='utf-8')
     (output / 'robots.txt').write_text('User-agent: *\nAllow: /\nSitemap: ' + SITE_ORIGIN + base + 'sitemap.xml\n', encoding='utf-8')
     generated = set(pages) | {'.nojekyll', 'sitemap.xml', 'robots.txt', 'assets/site.css',
-                              'assets/site.js', 'assets/favicon.svg', 'assets/research.json', 'assets/challenge-feedback.png',
-                              'assets/immediate-stress.png'}
+                              'assets/site.js', 'assets/favicon.svg', 'assets/research.json'}
     for name in set(old_generated) - generated:
         stale = output / name
         if stale.is_file():
