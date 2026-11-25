@@ -35,7 +35,7 @@ STATUSES = {'measured': 'ממצא מדוד', 'mixed': 'תוצאות מעורבו
             'theory': 'מסגרת תיאורטית', 'preliminary': 'ראשוני', 'background': 'רקע בלבד',
             'correction': 'תיקון', 'protocol': 'תכנון, לא תוצאה'}
 NAV = [('home', '', 'התחלה'), ('model', 'model/', 'המודל המלא'),
-       ('research', 'research/', 'המחקרים'), ('process', 'process/', 'התהליך'),
+       ('research', 'research/', 'המחקרים'), ('results', 'results/', 'תוצאות'), ('process', 'process/', 'התהליך'),
        ('about', 'about/', 'איך לקרוא')]
 
 
@@ -157,6 +157,7 @@ def build_site(content_dir, output, base='/'):
     model = (content_dir / 'model.md').read_text(encoding='utf-8')
     homepage = (content_dir / 'homepage.md').read_text(encoding='utf-8')
     preparation = (content_dir / 'preparation.md').read_text(encoding='utf-8')
+    results = (content_dir / 'results.md').read_text(encoding='utf-8')
     manifest = output / 'site-manifest.json'
     old_generated = json.loads(manifest.read_text(encoding='utf-8')) if manifest.exists() else []
     if not isinstance(old_generated, list) or any(not isinstance(p, str) for p in old_generated):
@@ -169,11 +170,14 @@ def build_site(content_dir, output, base='/'):
     assets.mkdir(exist_ok=True)
     for name in ['site.css', 'site.js', 'favicon.svg']:
         shutil.copyfile(ROOT / 'assets' / name, assets / name)
+    shutil.copyfile(content_dir / 'challenge-feedback.png', assets / 'challenge-feedback.png')
+    shutil.copyfile(content_dir / 'immediate-stress.png', assets / 'immediate-stress.png')
     (assets / 'research.json').write_text(json.dumps(records, ensure_ascii=False, indent=2), encoding='utf-8')
     pages = {
         'index.html': render_home(homepage, base),
         'model/index.html': render_reader(model, 'מסמך היסוד המלא', 'שבעת עקרונות המודל והמחקרים הקשורים אליהם.', base, 'model', 'model/'),
         'research/index.html': render_catalog(records, base),
+        'results/index.html': render_reader(results, 'תוצאות', '', base, 'results', 'results/'),
         'about/index.html': render_about(base),
     }
     process = model.partition('<a id="process"></a>')[2].split('<a id="conclusion"></a>', 1)[0]
@@ -191,7 +195,8 @@ def build_site(content_dir, output, base='/'):
     (output / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + ''.join('<url><loc>' + esc(u) + '</loc></url>' for u in urls) + '</urlset>', encoding='utf-8')
     (output / 'robots.txt').write_text('User-agent: *\nAllow: /\nSitemap: ' + SITE_ORIGIN + base + 'sitemap.xml\n', encoding='utf-8')
     generated = set(pages) | {'.nojekyll', 'sitemap.xml', 'robots.txt', 'assets/site.css',
-                              'assets/site.js', 'assets/favicon.svg', 'assets/research.json'}
+                              'assets/site.js', 'assets/favicon.svg', 'assets/research.json', 'assets/challenge-feedback.png',
+                              'assets/immediate-stress.png'}
     for name in set(old_generated) - generated:
         stale = output / name
         if stale.is_file():

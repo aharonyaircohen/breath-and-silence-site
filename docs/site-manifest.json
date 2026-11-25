@@ -2,7 +2,9 @@
   ".nojekyll",
   "404.html",
   "about/index.html",
+  "assets/challenge-feedback.png",
   "assets/favicon.svg",
+  "assets/immediate-stress.png",
   "assets/research.json",
   "assets/site.css",
   "assets/site.js",
@@ -134,6 +136,7 @@
   "research/s121/index.html",
   "research/s122/index.html",
   "research/s123/index.html",
+  "results/index.html",
   "robots.txt",
   "sitemap.xml"
 ]
