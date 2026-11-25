@@ -71,6 +71,43 @@ class ApprovedPublicationTests(unittest.TestCase):
             self.assertIn('dispenza', searchable, source_id)
             self.assertIn('דיספנזה', searchable, source_id)
 
+    def test_homepage_explains_the_training_before_research(self):
+        path = self.output / 'index.html'
+        article = path.read_text().split('<article class="article">', 1)[1].split('</article>', 1)[0]
+        self.assertIn('מה נדרש כדי ששקט עמוק יהפוך לשגרה?', article)
+        self.assertRegex(article, r'הנשימה[^\n]+לילד הפנימי[^\n]+דממה')
+        self.assertIn('דממה ללא מחשבה', article)
+        self.assertNotIn('20 דקות', article)
+        self.assertNotIn('קפאין', article)
+        self.assertLess(article.index('לילד הפנימי'), article.index('href="https://'))
+        self.assertIn('process/', self.pages[path].links)
+        self.assertIn('research/', self.pages[path].links)
+
+    def test_experiment_plan_is_outside_public_reading_paths(self):
+        self.assertNotIn(self.output / 'experiment/index.html', self.pages)
+        for route in ('index.html', 'model/index.html', 'process/index.html'):
+            path = self.output / route
+            self.assertNotIn(BASE + 'experiment/', self.pages[path].links)
+            text = path.read_text()
+            for phrase in ('תוכנית מדידה מוצעת', 'יימדדו בנפרד', 'נבדוק רוגע', 'קשר כזה בסקר'):
+                self.assertNotIn(phrase, text, (route, phrase))
+        self.assertNotIn(BASE + 'experiment/', (self.output / 'sitemap.xml').read_text())
+        (self.output / 'experiment').mkdir()
+        stale = self.output / 'experiment/index.html'
+        stale.write_text('Old public plan')
+        manifest = self.output / 'site-manifest.json'
+        manifest.write_text(json.dumps(json.loads(manifest.read_text()) + ['experiment/index.html']))
+        self.mod.build_site(ROOT / 'content', self.output, BASE)
+        self.assertFalse(stale.exists())
+
+    def test_preparation_is_linked_from_process_and_preserves_caffeine_sources(self):
+        path = self.output / 'preparation/index.html'
+        self.assertIn(path, self.pages)
+        self.assertIn('../preparation/', self.pages[self.output / 'process/index.html'].links)
+        self.assertIn('הבחירה אישית ואינה תנאי להשתתפות', path.read_text())
+        for pmid in (12460875, 15882556, 2195579, 2912010, 31900579, 36870101):
+            self.assertIn(f'https://pubmed.ncbi.nlm.nih.gov/{pmid}/', self.pages[path].links)
+
     def test_local_links_assets_and_anchors(self):
         problems = []
         for file, parsed in self.pages.items():

@@ -24,7 +24,7 @@ PRINCIPLES = {
     'P4': ('אימון לשקט ולעומק', 'מה מתרחש בחוויה, מעבר למספר הדקות, ומה ידוע על תפקיד העומק.'),
     'P5': ('שחרור מטען לא מודע', 'שינוי תגובות אוטומטיות ורגשיות בלי לחייב הבנה סיפורית או פורקן.'),
     'P6': ('מצב הבסיס והתגובה לסטרס', 'הבחנה בין הקלה בזמן תרגול, שינוי במנוחה ותגובה בזמן דרישה.'),
-    'P7': ('שיפור, שימור ודעיכה', 'מה עשוי להשתנות, מה נשאר לאחר התרגול ומה הניסוי מבקש לברר.'),
+    'P7': ('שיפור, שימור ודעיכה', 'מה משתנה בזמן התרגול ומה נשאר בחזרה לשגרה.'),
     'B': ('רקע ובטיחות', 'מקורות רקע, לא הוכחה ליעילות.'),
 }
 KINDS = {'trial': 'ניסוי', 'observational': 'מחקר תצפיתי', 'review': 'סקירה',
@@ -36,7 +36,7 @@ STATUSES = {'measured': 'ממצא מדוד', 'mixed': 'תוצאות מעורבו
             'correction': 'תיקון', 'protocol': 'תכנון, לא תוצאה'}
 NAV = [('home', '', 'התחלה'), ('model', 'model/', 'המודל המלא'),
        ('research', 'research/', 'המחקרים'), ('process', 'process/', 'התהליך'),
-       ('experiment', 'experiment/', 'הניסוי'), ('about', 'about/', 'איך לקרוא')]
+       ('about', 'about/', 'איך לקרוא')]
 
 
 def public_model(text, base='/'):
@@ -80,7 +80,7 @@ def shell(title, body, base, active='home', route='', description='דממה חי
 <link rel="stylesheet" href="{base}assets/site.css"><link rel="icon" href="{base}assets/favicon.svg" type="image/svg+xml"><script src="{base}assets/site.js" defer></script></head>
 <body><a class="skip" href="#main">דילוג לתוכן</a><header class="topbar"><div class="wrap topbar-inner"><a class="brand" href="{base}">דממה חיה<span>המודל · המחקר · התהליך</span></a><nav class="nav" aria-label="ניווט ראשי">{nav}</nav><details class="mobile-nav"><summary>תפריט</summary><nav aria-label="ניווט בנייד">{nav}</nav></details></div></header>
 <main id="main" class="wrap">{body}</main>
-<footer class="site-footer"><div class="wrap footer-inner"><p>מודל עבודה ומאגר מחקר, לא הבטחת תוצאה או תחליף לטיפול. המקורות כוללים גם מגבלות, תוצאות אפס ומקורות רקע. אין חובה לחוות עומק, שחרור או רגש מסוים.</p><a href="{REPO_URL}" target="_blank" rel="noopener noreferrer">קוד האתר ותיעוד</a></div></footer></body></html>'''
+<footer class="site-footer"><div class="wrap footer-inner"><p>דממה חיה - אימון לשקט נפשי</p><a href="{REPO_URL}" target="_blank" rel="noopener noreferrer">קוד האתר ותיעוד</a></div></footer></body></html>'''
 
 
 def page_head(title, description, base, parent=None):
@@ -156,6 +156,7 @@ def build_site(content_dir, output, base='/'):
             raise ValueError('Research source URL must use http or https and have a hostname')
     model = (content_dir / 'model.md').read_text(encoding='utf-8')
     homepage = (content_dir / 'homepage.md').read_text(encoding='utf-8')
+    preparation = (content_dir / 'preparation.md').read_text(encoding='utf-8')
     manifest = output / 'site-manifest.json'
     old_generated = json.loads(manifest.read_text(encoding='utf-8')) if manifest.exists() else []
     if not isinstance(old_generated, list) or any(not isinstance(p, str) for p in old_generated):
@@ -171,15 +172,13 @@ def build_site(content_dir, output, base='/'):
     (assets / 'research.json').write_text(json.dumps(records, ensure_ascii=False, indent=2), encoding='utf-8')
     pages = {
         'index.html': render_home(homepage, base),
-        'model/index.html': render_reader(model, 'מסמך היסוד המלא', 'המודל, הביסוס המחקרי והניסוי - לפי שבעת העקרונות.', base, 'model', 'model/'),
+        'model/index.html': render_reader(model, 'מסמך היסוד המלא', 'שבעת עקרונות המודל והמחקרים הקשורים אליהם.', base, 'model', 'model/'),
         'research/index.html': render_catalog(records, base),
         'about/index.html': render_about(base),
     }
-    layer = model.split('<a id="experiment"></a>')[-1].split('<a id="conclusion"></a>')[0]
-    process = layer.split('## 15.')[0]
-    experiment = layer[layer.find('## 15.'):] if '## 15.' in layer else layer
-    pages['process/index.html'] = render_reader(process, 'התהליך והבחירה בו', 'מסגרת העבודה המוצעת - לא פרוטוקול נשימה מאושר או הבטחת חוויה.', base, 'process', 'process/')
-    pages['experiment/index.html'] = render_reader(experiment, 'הניסוי והמדידה', 'שאלות, תחזיות ומדדים מוצעים. אין כאן איסוף פעיל של נתוני משתתפים.', base, 'experiment', 'experiment/')
+    process = model.partition('<a id="process"></a>')[2].split('<a id="conclusion"></a>', 1)[0]
+    pages['process/index.html'] = render_reader(process, 'מה קורה במפגש', 'נשימה, חיבור לילד הפנימי ושהייה בדממה.', base, 'process', 'process/')
+    pages['preparation/index.html'] = render_reader(preparation, 'לקראת המפגש', 'בחירות פשוטות שאפשר לנסות לקראת התרגול.', base, '', 'preparation/')
     pages['404.html'] = shell('העמוד לא נמצא', page_head('העמוד לא נמצא', 'אפשר לחזור למסמך המודל או לחפש במאגר המחקרים.', base) + f'<div class="actions"><a class="button" href="{base}">חזרה להתחלה</a><a class="button secondary" href="{base}research/">חיפוש במחקרים</a></div>', base)
     for r in records:
         pages[f'research/s{r["id"]:03d}/index.html'] = render_source(r, base)

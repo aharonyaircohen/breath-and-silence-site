@@ -13,8 +13,9 @@ class StaticSiteTests(unittest.TestCase):
             root = Path(td)
             content = root / 'content'
             content.mkdir()
-            (content / 'model.md').write_text('# דממה חיה\n\nהמוח מתמכר לרעש [7].\n\n<a id="experiment"></a>\n# ג. התהליך והניסוי\n\n## 14. מסגרת התהליך\nבחירה חופשית.\n\n## 15. שאלת הניסוי\nשינוי מחוץ לתרגול.\n\n<a id="conclusion"></a>\n# ד. מסקנה\nמודל עבודה.')
+            (content / 'model.md').write_text('# דממה חיה\n\nהמוח מתמכר לרעש [7].\n\n<a id="process"></a>\n## התהליך\nבחירה חופשית.\n\n<a id="conclusion"></a>\n# ד. מסקנה\nמודל עבודה.')
             (content / 'homepage.md').write_text('# דממה חיה\n## אימון לשקט נפשי\n\nדף ההסבר.')
+            (content / 'preparation.md').write_text('מרווח לפני התרגול.')
             record = {'id': 7, 'title': '<script>test</script> Study', 'url': 'https://example.org/study',
                       'principles': ['P1'], 'identifiers': {}, 'year': '2024', 'journal': '',
                       'summary_he': 'ממצא ניסויי', 'relevance_he': 'למידת הרגל',
@@ -24,7 +25,7 @@ class StaticSiteTests(unittest.TestCase):
             mod.build_site(content, output, '/course/')
             for name in ['index.html', 'model/index.html', 'research/index.html',
                          'research/s007/index.html', 'process/index.html',
-                         'experiment/index.html', 'about/index.html', '404.html']:
+                         'preparation/index.html', 'about/index.html', '404.html']:
                 self.assertTrue((output / name).is_file(), name)
                 html = (output / name).read_text()
                 self.assertIn('lang="he"', html)
@@ -42,6 +43,8 @@ class StaticSiteTests(unittest.TestCase):
             self.assertTrue((output / 'assets/site.css').is_file())
             self.assertTrue((output / 'assets/site.js').is_file())
             self.assertIn('source-filter', (output / 'research/index.html').read_text())
+            self.assertIn('בחירה חופשית.', (output / 'process/index.html').read_text())
+            self.assertNotIn('מודל עבודה.', (output / 'process/index.html').read_text())
 
 
 class RebuildAndPublicationTests(unittest.TestCase):
@@ -51,6 +54,7 @@ class RebuildAndPublicationTests(unittest.TestCase):
         content.mkdir()
         (content / 'model.md').write_text('# המודל\n\nתיאור [7].')
         (content / 'homepage.md').write_text('# דממה חיה\n## אימון לשקט נפשי\n\nדף ההסבר.')
+        (content / 'preparation.md').write_text('מרווח לפני התרגול.')
         record = {'id': 7, 'title': 'Study', 'url': 'https://example.org/study',
                   'principles': ['P1'], 'identifiers': {}, 'year': '', 'journal': '',
                   'summary_he': 'סיכום מדידה', 'relevance_he': 'רלוונטיות למודל',
